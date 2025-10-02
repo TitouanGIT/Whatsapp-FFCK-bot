@@ -1,0 +1,17 @@
+services:
+  bot:
+    build:
+      context: .
+    container_name: Whatsapp_bot
+    environment:
+      - NODE_ENV=production
+      - LOCAL_AUTH_DATA_PATH=/app/auth
+    volumes:
+      - ./data:/app/data
+      - auth:/app/auth
+    shm_size: 1g
+    restart: unless-stopped
+    user: "0:0"
+
+volumes:
+  auth:
